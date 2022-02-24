@@ -34,7 +34,7 @@ stream.on("tweet", async (tweet) => {
         console.log("done");
       }
     } catch (error) {
-      console.log(error, error.message);
+      console.log(error);
     }
   } else {
     return;
