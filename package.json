@@ -1,0 +1,22 @@
+{
+  "name": "savetweet",
+  "version": "0.0.1",
+  "description": "twitter bot",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "dotenv": "^8.2.0",
+    "oauth": "^0.9.15",
+    "oauth-1.0a": "^2.2.6",
+    "request": "^2.88.2",
+    "sentiment": "^5.0.2",
+    "sharp": "^0.26.2",
+    "twit": "^2.2.11",
+    "twitter-autohook": "^1.7.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "msx47",
+  "license": "ISC"
+}

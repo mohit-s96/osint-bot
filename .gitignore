@@ -1,0 +1,4 @@
+.env
+/node_modules
+test1.json
+oldaccountenv.txt
