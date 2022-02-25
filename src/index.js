@@ -15,7 +15,11 @@ const T = new Twit(config);
 var stream = T.stream("statuses/filter", { follow: accounts });
 
 stream.on("tweet", async (tweet) => {
-  if (accounts.includes(tweet.user.id_str) && !tweet.in_reply_to_user_id_str) {
+  if (
+    accounts.includes(tweet.user.id_str) &&
+    !tweet.in_reply_to_user_id_str &&
+    isRetweetOfAccountInList(tweet)
+  ) {
     try {
       const req = {
         url: `https://api.twitter.com/2/users/1319638940471623682/retweets`,
@@ -40,3 +44,25 @@ stream.on("tweet", async (tweet) => {
     return;
   }
 });
+
+/**
+ *
+ * @param {*} tweet
+ * @returns boolean
+ *
+ * fixes #1
+ */
+function isRetweetOfAccountInList(tweet) {
+  const originalTweet = tweet.retweeted_status;
+  if (originalTweet) {
+    if (
+      accounts.includes(originalTweet.user.id_str) &&
+      !originalTweet.in_reply_to_user_id_str
+    ) {
+      return true;
+    }
+    return false;
+  } else {
+    return true;
+  }
+}
