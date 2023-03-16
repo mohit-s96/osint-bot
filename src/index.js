@@ -31,9 +31,6 @@ const rules = splitter(accounts).map(arr => (
   }
 ));
 
-console.dir(rules);
-process.exit(1);
-
 (async () => {
   const stream = await client.v2.searchStream({
     "tweet.fields": ["in_reply_to_user_id", "referenced_tweets"],
