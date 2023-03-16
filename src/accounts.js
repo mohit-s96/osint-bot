@@ -1,4 +1,21 @@
-module.exports = [
+exports.splitter = (arr = [], charLimit = 480) => {
+  let iter = 0;
+  const result = [];
+  let buffer = [];
+  for (let i = 0; i < arr.length; i++) {
+    buffer.push(arr[i]);
+    iter += (arr[i].length + 9); //'from:'.length + ' OR '.length
+    if (iter >= charLimit) {
+      result.push(buffer);
+      iter = 0;
+      buffer = [];
+    }
+  }
+  if (buffer.length)
+    result.push(buffer)
+  return result;
+}
+exports.accounts = [
   "1380168103846367234",
   "1340039818038956033",
   "1284890693907951618",
